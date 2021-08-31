@@ -1,0 +1,20 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Symandy\Component\Resource\Model;
+
+use DateTimeInterface;
+
+interface ArchivableInterface
+{
+
+    public function getArchivedAt(): ?DateTimeInterface;
+
+    public function setArchivedAt(?DateTimeInterface $archivedAt): void;
+
+    public function archive(): void;
+
+    public function restore(): void;
+
+}
