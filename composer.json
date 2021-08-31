@@ -1,0 +1,25 @@
+{
+    "name": "symandy/resource",
+    "description": "Set of reusable resource interfaces and traits",
+    "type": "library",
+    "license": ["MIT"],
+    "require": {
+        "php": ">=8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Symandy\\Component\\Resource\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Symandy\\Tests\\Component\\Resource\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    }
+}
