@@ -10,39 +10,15 @@ use DateTimeInterface;
 trait TimestampableTrait
 {
 
-    protected ?DateTimeInterface $createdAt = null;
-
-    protected ?DateTimeInterface $updatedAt = null;
-
-    public function getCreatedAt(): ?DateTimeInterface
-    {
-        return $this->createdAt;
+    use CreatableTrait {
+        create as initializeCreatedAt;
     }
-
-    public function setCreatedAt(?DateTimeInterface $createdAt): void
-    {
-        $this->createdAt = $createdAt;
-    }
+    use UpdatableTrait;
 
     public function create(): void
     {
-        $this->setCreatedAt(new DateTime());
+        $this->initializeCreatedAt();
         $this->update();
-    }
-
-    public function getUpdatedAt(): ?DateTimeInterface
-    {
-        return $this->updatedAt;
-    }
-
-    public function setUpdatedAt(?DateTimeInterface $updatedAt): void
-    {
-        $this->updatedAt = $updatedAt;
-    }
-
-    public function update(): void
-    {
-        $this->setUpdatedAt(new DateTime());
     }
 
 }

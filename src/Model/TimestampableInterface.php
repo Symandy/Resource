@@ -6,19 +6,7 @@ namespace Symandy\Component\Resource\Model;
 
 use DateTimeInterface;
 
-interface TimestampableInterface
+interface TimestampableInterface extends CreatableInterface, UpdatableInterface
 {
-
-    public function getCreatedAt(): ?DateTimeInterface;
-
-    public function setCreatedAt(?DateTimeInterface $createdAt): void;
-
-    public function create(): void;
-
-    public function getUpdatedAt(): ?DateTimeInterface;
-
-    public function setUpdatedAt(?DateTimeInterface $updatedAt): void;
-
-    public function update(): void;
 
 }
