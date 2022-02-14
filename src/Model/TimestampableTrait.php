@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Symandy\Component\Resource\Model;
 
-use DateTime;
-use DateTimeInterface;
-
 trait TimestampableTrait
 {
 
