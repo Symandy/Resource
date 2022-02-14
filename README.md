@@ -27,6 +27,7 @@ Each interface have a corresponding traits and contains one or several attribute
 functions.
 - `CodeAwareInterface` / `CodeAwareTrait` => string `$code` + getter and setter.
 - `SlugAwareInterface` / `SlugAwareTrait` => string `$slug` + getter and setter.
+- `VersionedInterface` / `VersionedTrait` => int `$version` + getter + setter
 
 
 ## Usage
