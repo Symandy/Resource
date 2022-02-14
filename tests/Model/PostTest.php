@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Symandy\Tests\Component\Resource\Model;
 
-use JetBrains\PhpStorm\Pure;
 use PHPUnit\Framework\TestCase;
 use Symandy\Component\Resource\Model\ArchivableInterface;
 use Symandy\Component\Resource\Model\CodeAwareInterface;
@@ -12,6 +11,7 @@ use Symandy\Component\Resource\Model\ResourceInterface;
 use Symandy\Component\Resource\Model\SlugAwareInterface;
 use Symandy\Component\Resource\Model\TimestampableInterface;
 use Symandy\Component\Resource\Model\ToggleableInterface;
+use Symandy\Component\Resource\Model\VersionedInterface;
 use Symandy\Tests\Component\Resource\app\Post;
 use Symandy\Tests\Component\Resource\app\PostInterface;
 
@@ -26,6 +26,7 @@ class PostTest extends TestCase
         self::assertInstanceOf(CodeAwareInterface::class, $post);
         self::assertInstanceOf(SlugAwareInterface::class, $post);
         self::assertInstanceOf(ToggleableInterface::class, $post);
+        self::assertInstanceOf(VersionedInterface::class, $post);
         self::assertInstanceOf(TimestampableInterface::class, $post);
         self::assertInstanceOf(ArchivableInterface::class, $post);
         self::assertInstanceOf(PostInterface::class, $post);
@@ -40,6 +41,10 @@ class PostTest extends TestCase
 
         self::assertSame('CODE', $post->getCode());
         self::assertSame('one-basic-slug', $post->getSlug());
+
+        self::assertSame(1, $post->getVersion());
+        $post->setVersion(2);
+        self::assertSame(2, $post->getVersion());
 
         self::assertFalse($post->isEnabled());
         $post->enable();

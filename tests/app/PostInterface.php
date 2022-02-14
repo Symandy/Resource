@@ -10,12 +10,14 @@ use Symandy\Component\Resource\Model\ResourceInterface;
 use Symandy\Component\Resource\Model\SlugAwareInterface;
 use Symandy\Component\Resource\Model\TimestampableInterface;
 use Symandy\Component\Resource\Model\ToggleableInterface;
+use Symandy\Component\Resource\Model\VersionedInterface;
 
 interface PostInterface extends
     ResourceInterface,
     CodeAwareInterface,
     SlugAwareInterface,
     ToggleableInterface,
+    VersionedInterface,
     TimestampableInterface,
     ArchivableInterface
 {
