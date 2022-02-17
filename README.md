@@ -16,18 +16,19 @@ $ composer require symandy/resource
 ## Components
 The components are stored in `Symandy\Component\Resource\Model` namespace.
 
-Each interface have a corresponding traits and contains one or several attributes :
+Each interface have a corresponding trait and contains one or several attributes :
 
-- `ResourceInterface` / `ResourceTrait` => int `$id` + getter.
-- `TimestampableInterface` / `TimestampableTrait` => datetime `$createdAt`, `$updatedAt`, getters + setters and 
-`create()` and `update()` functions which set the current datetime to the corresponding attribute.
-- `ArchivableInterface` / `ArchivableTrait` => datetime `$archivedAt`, getter and setter and `archive()` function 
-(set `$archivedAt` to current datetime) and `restore()` function (set  `$archivedAt` to `null`).
-- `ToggleableInterface` / `ToggleableTrait` => boolean `$enabled`, getter and setter with `enable()`, `disable()` 
-functions.
-- `CodeAwareInterface` / `CodeAwareTrait` => string `$code` + getter and setter.
-- `SlugAwareInterface` / `SlugAwareTrait` => string `$slug` + getter and setter.
-- `VersionedInterface` / `VersionedTrait` => int `$version` + getter + setter
+| Name (trait + interface)                           | Property    | Methods                                                                                |
+|----------------------------------------------------|-------------|----------------------------------------------------------------------------------------|
+| Resource                                           | $id         | getId()                                                                                |
+| Creatable                                          | $createdAt  | getCreatedAt() <br/> setCreatedAt(?\DateTimeInterface)<br/> create()                   |
+| Updatable                                          | $updatedAt  | getUpdatedAt() <br/> setUpdatedAt(?\DateTimeInterface)<br/> update()                   |
+| Timestampable<br/> (extends Creatable & Updatable) | -           | -                                                                                      |
+| Archivable                                         | $archivedAt | getArchivedAt() <br/> setArchivedAt(?\DateTimeInterface)<br/> archive()<br/> restore() |
+| Toggleable                                         | $enabled    | isEnabled() <br/> setEnabled(bool)<br/> enable()<br/> disable()                        |
+| CodeAware                                          | $code       | getCode() <br/> setCode(?string)                                                       |
+| SlugAware                                          | $slug       | getSlug() <br/> setSlug(?string)                                                       |
+| Versioned                                          | $version    | getVersion() <br/> setVersion(?int)                                                    |
 
 
 ## Usage
