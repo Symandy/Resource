@@ -1,35 +1,45 @@
 name: Build
 
 on:
-  push:
-  pull_request:
+    push:
+    pull_request:
 
 jobs:
-  build:
+    build:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                php-version:
+                    - 7.4
+                    - 8.0
+                    - 8.1
 
-    runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v2
 
-    steps:
-    - uses: actions/checkout@v2
+            -   name: Setup PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: ${{ matrix.php-version }}
 
-    - uses: php-actions/composer@v6
-      with:
-        php_version: 8.0
+            -   name: Validate composer.json and composer.lock
+                run: composer validate --strict
 
-    - name: Validate composer.json and composer.lock
-      run: composer validate --strict
+            -   name: Install Dependencies
+                run: composer install --no-interaction --no-progress
 
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v2
-      with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
+            -   name: Cache Composer packages
+                id: composer-cache
+                uses: actions/cache@v2
+                with:
+                    path: vendor
+                    key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+                    restore-keys: |
+                        ${{ runner.os }}-php-
 
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
+            # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
+            # Docs: https://getcomposer.org/doc/articles/scripts.md
 
-    - name: Run test suite
-      run: composer run-script test
+            -   name: Run test suite
+                run: composer run-script test
