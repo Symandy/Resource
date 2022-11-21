@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Symandy\Component\Resource\Model;
 
-use DateTime;
+use DateTimeImmutable;
 use DateTimeInterface;
+
+use function time;
 
 trait ArchivableTrait
 {
@@ -24,7 +26,7 @@ trait ArchivableTrait
 
     public function archive(): void
     {
-        $this->setArchivedAt(new DateTime());
+        $this->setArchivedAt(DateTimeImmutable::createFromFormat('U', (string) time()));
     }
 
     public function restore(): void
