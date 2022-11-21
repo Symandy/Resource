@@ -9,7 +9,7 @@ use DateTimeInterface;
 trait StartableTrait
 {
 
-    private ?DateTimeInterface $startsAt = null;
+    protected ?DateTimeInterface $startsAt = null;
 
     public function getStartsAt(): ?DateTimeInterface
     {

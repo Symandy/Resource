@@ -9,7 +9,7 @@ use DateTimeInterface;
 trait EndableTrait
 {
 
-    private ?DateTimeInterface $endsAt = null;
+    protected ?DateTimeInterface $endsAt = null;
 
     public function getEndsAt(): ?DateTimeInterface
     {
