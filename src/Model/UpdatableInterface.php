@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Symandy\Component\Resource\Model;
 
 use DateTimeInterface;
+use DateTimeZone;
 
 interface UpdatableInterface
 {
@@ -13,6 +14,6 @@ interface UpdatableInterface
 
     public function setUpdatedAt(?DateTimeInterface $updatedAt): void;
 
-    public function update(): void;
+    public function update(DateTimeZone $timezone = null): void;
 
 }

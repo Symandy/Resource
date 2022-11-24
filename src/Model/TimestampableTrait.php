@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Symandy\Component\Resource\Model;
 
+use DateTimeZone;
+
 trait TimestampableTrait
 {
 
@@ -12,9 +14,9 @@ trait TimestampableTrait
     }
     use UpdatableTrait;
 
-    public function create(): void
+    public function create(DateTimeZone $timezone = null): void
     {
-        $this->initializeCreatedAt();
+        $this->initializeCreatedAt($timezone);
         $this->update();
     }
 
