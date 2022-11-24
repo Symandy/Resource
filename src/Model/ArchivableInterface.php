@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Symandy\Component\Resource\Model;
 
 use DateTimeInterface;
+use DateTimeZone;
 
 interface ArchivableInterface
 {
@@ -13,7 +14,7 @@ interface ArchivableInterface
 
     public function setArchivedAt(?DateTimeInterface $archivedAt): void;
 
-    public function archive(): void;
+    public function archive(DateTimeZone $timezone = null): void;
 
     public function restore(): void;
 
